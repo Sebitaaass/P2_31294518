@@ -20,11 +20,9 @@ formularioPayment.addEventListener('submit',e=>{
 	.then(res=>res.json())
 	.then(res=>{
 		if(res.status){
-        Swal.fire('¡Pago Realizado!').then(()=>{
-        	window.location.href='/getPayment';
-        })
+        alert('¡Pago Realizado!');
 		}else{
-		Swal.fire('¡Por algun extraño motivo, no se pudo realizar el pago!');
+		alert('¡Por algun extraño motivo, no se pudo realizar el pago!');
 		}
 	})
 

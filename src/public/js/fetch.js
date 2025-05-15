@@ -17,11 +17,9 @@ formulario.addEventListener('submit',e=>{
 	.then(res=>res.json())
 	.then(res=>{
 		if(res.status==true){
-			Swal.fire('¡Datos de Contacto creados Correctamente!').then(()=>{
-				window.location.href='/admin/contacts';
-			})
+			alert('¡Datos de Contacto creados Correctamente!');
 		}else{
-			Swal.fire('¡Los Datos no se pudieron crear correctamente!');
+			alert('¡Los Datos no se pudieron crear correctamente!');
 		}
 	})
 	

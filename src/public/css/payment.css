@@ -1,66 +1,84 @@
-.payment-container {
-  font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  max-width: 600px;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box; /* Añadido para incluir padding en el ancho */
+:root {
+  --primary: #2c3e50;
+  --accent: #3498db;
+  --light-gray: #ecf0f1;
+  --input-border: #ccd6dd;
+  --focus-shadow: rgba(52, 152, 219, 0.3);
+  --radius: 10px;
 }
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(120deg, #f5f7fa, #c3cfe2);
+  margin: 0;
+  padding: 2rem 1rem;
+  color: var(--primary);
+}
+
+.payment-container {
+  max-width: 600px;
+  margin: auto;
+  background: #fff;
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
 .payment-header {
   text-align: center;
   margin-bottom: 2rem;
 }
+
 .payment-title {
-  font-size: 1.8rem;
-  color: #2c3e50;
-  font-weight: 600;
+  font-size: 2rem;
   margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .payment-subtitle {
-  color: #7f8c8d;
   font-size: 1rem;
+  color: #7f8c8d;
 }
 
 .payment-form {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 1.5rem;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
 }
 
 .form-label {
+  margin-bottom: 0.5rem;
   font-weight: 500;
-  color: #34495e;
-  font-size: 0.95rem;
 }
 
 .form-input {
-  padding: 0.8rem 1rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  padding: 0.75rem 1rem;
   font-size: 1rem;
-  transition: all 0.3s;
-  width: 100%; /* Asegura que no se salga del contenedor */
-  box-sizing: border-box; /* Incluye padding en el ancho */
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius);
+  background-color: #fdfdfd;
+  transition: 0.3s border, 0.3s box-shadow;
 }
 
 .form-input:focus {
-  border-color: #3498db;
-  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--focus-shadow);
   outline: none;
 }
 
 .card-details {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .expiration-group {
@@ -68,32 +86,26 @@
   gap: 0.5rem;
 }
 
-.expiration-input {
-  width: 100%; /* Cambiado para mejor responsive */
-  flex: 1; /* Permite que los selects crezcan */
-}
-
 .amount-group {
   display: flex;
-  align-items: center;
   gap: 0.5rem;
-}
-
-.currency-select {
-  flex: 0 0 80px;
+  flex-wrap: wrap;
 }
 
 .submit-btn {
-  background-color: #3498db;
+  background-color: var(--accent);
   color: white;
   padding: 1rem;
+  font-size: 1.1rem;
   border: none;
-  border-radius: 8px;
-  font-size: 1rem;
+  border-radius: var(--radius);
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.3s;
-  width: 100%; /* Ocupa todo el ancho disponible */
+  transition: background 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .submit-btn:hover {
@@ -101,65 +113,20 @@
 }
 
 .card-icon {
-  height: 24px;
-  margin-left: 0.5rem;
-  vertical-align: middle;
+  font-size: 1.2rem;
+  color: var(--accent);
 }
 
-/* Estilos mejorados para dispositivos móviles */
-@media screen and (max-width: 768px) {
-  .payment-container {
-    padding: 1.2rem;
-    margin: 1rem;
-    width: calc(100% - 2rem); /* Ajuste para márgenes */
-  }
-  
-  .payment-title {
-    font-size: 1.5rem;
-  }
-  
+@media (max-width: 768px) {
   .card-details {
     grid-template-columns: 1fr;
   }
-  
-  .expiration-group {
-    flex-direction: column; /* Cambia a columna en móviles */
-    gap: 0.5rem;
-  }
-  
-  .expiration-input {
-    width: 100%;
-  }
-  
-  .amount-group {
-    flex-direction: column; /* Cambia a columna en móviles */
-    align-items: stretch;
-  }
-  
-  .currency-select {
-    flex: 1;
-    width: 100%;
-  }
-}
 
-@media screen and (max-width: 480px) {
-  .payment-container {
-    padding: 1rem;
-    margin: 0.5rem;
-    width: calc(100% - 1rem);
+  .expiration-group {
+    flex-direction: column;
   }
-  
-  .payment-title {
-    font-size: 1.3rem;
-  }
-  
-  .payment-form {
-    gap: 1rem;
-  }
-  
-  .form-input {
-    padding: 0.7rem 0.9rem;
-    font-size: 0.95rem;
-  width: 100%;
+
+  .amount-group {
+    flex-direction: column;
   }
 }
